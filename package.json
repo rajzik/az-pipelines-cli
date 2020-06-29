@@ -1,0 +1,56 @@
+{
+  "name": "@rajzik/az-pipelines-cli",
+  "version": "0.0.0",
+  "description": "Azure pipelines tool",
+  "main": "index.js",
+  "repository": "git@github.com:rajzik/az-pipelines-cli.git",
+  "author": "Silhan Jan <jsilhan@oriflame.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^9.0.1",
+    "@rajzik/az-semantic-release-config": "^1.0.6",
+    "@rajzik/config-babel": "^1.11.23",
+    "@rajzik/config-eslint": "^2.4.57",
+    "@rajzik/config-jest": "^1.10.25",
+    "@rajzik/config-prettier": "^1.6.29",
+    "@rajzik/config-typescript": "^1.7.10",
+    "@rajzik/conventional-changelog-lint-config-beemo": "^1.0.1",
+    "@rajzik/lumos": "^3.0.78",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "semantic-release": "^17.1.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "lumos": {
+    "drivers": [
+      "babel",
+      "eslint",
+      "jest",
+      "prettier",
+      "typescript"
+    ],
+    "settings": {
+      "library": true,
+      "next": true,
+      "node": true
+    }
+  },
+  "scripts": {
+    "prepare": "lumos create-config --silent",
+    "lint": "lumos eslint",
+    "posttest": "yarn run lint",
+    "jest": "cross-env NODE_ENV=test TZ=UTC lumos jest",
+    "jest:coverage": "yarn run jest --coverage",
+    "test": "yarn run jest:coverage",
+    "type": "lumos typescript --noEmit",
+    "prettier": "lumos prettier",
+    "build": "lumos typescript",
+    "pretest": "yarn run type",
+    "release": "semantic-release"
+  }
+}
