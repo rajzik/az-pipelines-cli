@@ -1,1 +1,3 @@
-export default undefined;
+import cli from './cli';
+
+cli();

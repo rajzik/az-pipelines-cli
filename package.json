@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "Azure pipelines tool",
   "main": "index.js",
+  "types": "lib/index.d.ts",
   "repository": "git@github.com:rajzik/az-pipelines-cli.git",
   "author": "Silhan Jan <jsilhan@oriflame.com>",
   "license": "MIT",
@@ -52,5 +53,10 @@
     "build": "lumos typescript",
     "pretest": "yarn run type",
     "release": "semantic-release"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "minimist": "^1.2.5",
+    "simple-git": "^2.11.0"
   }
 }
