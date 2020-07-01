@@ -1,3 +1,3 @@
 import cli from './cli';
 
-cli();
+cli.runAndExit(process.argv.slice(2));

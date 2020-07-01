@@ -11,12 +11,13 @@
     "@commitlint/cli": "^9.0.1",
     "@rajzik/az-semantic-release-config": "^1.0.6",
     "@rajzik/config-babel": "^1.11.23",
-    "@rajzik/config-eslint": "^2.4.57",
+    "@rajzik/config-eslint": "^2.4.59",
     "@rajzik/config-jest": "^1.10.25",
     "@rajzik/config-prettier": "^1.6.29",
     "@rajzik/config-typescript": "^1.7.10",
     "@rajzik/conventional-changelog-lint-config-beemo": "^1.0.1",
-    "@rajzik/lumos": "^3.0.78",
+    "@rajzik/lumos": "^3.0.81",
+    "@types/react": "^16.9.41",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
     "semantic-release": "^17.1.1"
@@ -55,8 +56,11 @@
     "release": "semantic-release"
   },
   "dependencies": {
+    "@boost/cli": "^1.2.1",
+    "@boost/core": "^1.18.7",
     "chalk": "^4.1.0",
     "minimist": "^1.2.5",
+    "react": "^16.13.1",
     "simple-git": "^2.11.0"
   }
 }

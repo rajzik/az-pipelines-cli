@@ -9,6 +9,7 @@ const git = simpleGit({
 
 export async function cloneRepo(url: string) {
   await git.clone(url, REPO_PATH);
+  console.log(REPO_PATH);
 }
 
 export default git;
