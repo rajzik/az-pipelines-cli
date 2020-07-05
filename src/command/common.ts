@@ -2,7 +2,7 @@ import { prompt } from 'enquirer';
 import fsExtra from 'fs-extra';
 import path from 'path';
 import yaml from 'yaml';
-import { EnquirerPrompt, IConfig, IVariables } from '../types';
+import { EnquirerPrompt, IConfig, IVariable, IVariables } from '../types';
 import { asyncForEach, mapTypeToEnquirer } from '../utils';
 import { REPO_PATH } from './constants';
 import { cloneRepo } from './git';
@@ -42,10 +42,8 @@ export async function copyFiles(config: IConfig) {
   });
 }
 
-export async function readVariables(config: IConfig) {
-  const variablesYaml = await fsExtra.readFile(
-    path.join(REPO_PATH, config.rootDir, config.variables),
-  );
+export async function readVariables(variablePath: string): Promise<IVariables> {
+  const variablesYaml = await fsExtra.readFile(variablePath);
   return yaml.parse(variablesYaml.toString());
 }
 
@@ -55,7 +53,7 @@ export async function cloneRepoAndGetConfig(url: string) {
   return getConfig();
 }
 
-export async function promptUser({ variables }: IVariables) {
+export async function promptUser(variables: IVariable[]) {
   const options = variables.map(mapTypeToEnquirer) as EnquirerPrompt;
   return prompt<{ [key: string]: unknown }>(options);
 }

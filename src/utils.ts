@@ -35,11 +35,17 @@ export function mapTypeToEnquirer({ value, name }: IVariable): EnquirerPrompt {
   };
 }
 
-export function convertVariablesObjectToYaml(obj: { [key: string]: unknown }) {
+export function convertVariablesObjectToYaml(
+  obj: { [key: string]: unknown },
+  extraVariables: IVariable[] = [],
+) {
   return yaml.stringify({
-    variables: Object.keys(obj).map(name => ({
-      name,
-      value: obj[name],
-    })),
+    variables: [
+      ...Object.keys(obj).map(name => ({
+        name,
+        value: obj[name],
+      })),
+      ...extraVariables,
+    ],
   });
 }
