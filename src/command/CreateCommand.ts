@@ -1,6 +1,13 @@
 /* eslint-disable class-methods-use-this */
 import { Arg, Command, Config } from '@boost/cli';
-import { cloneRepoAndGetConfig } from './common';
+import { convertVariablesObjectToYaml } from '../utils';
+import {
+  cloneRepoAndGetConfig,
+  copyFiles,
+  promptUser,
+  readVariables,
+  writeVariables,
+} from './common';
 
 type CustomParams = [string];
 
@@ -17,7 +24,10 @@ export default class CreateCommand extends Command {
   })
   async run(url: string) {
     const config = await cloneRepoAndGetConfig(url);
-
-    console.log(config, 'sup mate');
+    await copyFiles(config);
+    const variables = await readVariables(config);
+    const answers = await promptUser(variables);
+    const yaml = convertVariablesObjectToYaml(answers);
+    await writeVariables(config, yaml);
   }
 }

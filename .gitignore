@@ -55,3 +55,5 @@ TEST-RESULTS.xml
 .env
 .env.build
 next.config.js
+
+tools

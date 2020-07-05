@@ -7,26 +7,24 @@
   "repository": "git@github.com:rajzik/az-pipelines-cli.git",
   "author": "Silhan Jan <jsilhan@oriflame.com>",
   "license": "MIT",
-  "devDependencies": {
-    "@commitlint/cli": "^9.0.1",
-    "@rajzik/az-semantic-release-config": "^1.0.6",
-    "@rajzik/config-babel": "^1.11.23",
-    "@rajzik/config-eslint": "^2.4.59",
-    "@rajzik/config-jest": "^1.10.25",
-    "@rajzik/config-prettier": "^1.6.29",
-    "@rajzik/config-typescript": "^1.7.10",
-    "@rajzik/conventional-changelog-lint-config-beemo": "^1.0.1",
-    "@rajzik/lumos": "^3.0.81",
-    "@types/react": "^16.9.41",
-    "husky": "^4.2.5",
-    "lint-staged": "^10.2.11",
-    "semantic-release": "^17.1.1"
-  },
   "publishConfig": {
     "access": "public"
   },
   "engines": {
     "node": ">=12"
+  },
+  "scripts": {
+    "prepare": "lumos create-config --silent",
+    "lint": "lumos eslint",
+    "posttest": "yarn run lint",
+    "jest": "cross-env NODE_ENV=test TZ=UTC lumos jest",
+    "jest:coverage": "yarn run jest --coverage",
+    "test": "yarn run jest:coverage",
+    "type": "lumos typescript --noEmit",
+    "prettier": "lumos prettier",
+    "build": "lumos typescript",
+    "pretest": "yarn run type",
+    "release": "semantic-release"
   },
   "lumos": {
     "drivers": [
@@ -42,25 +40,31 @@
       "node": true
     }
   },
-  "scripts": {
-    "prepare": "lumos create-config --silent",
-    "lint": "lumos eslint",
-    "posttest": "yarn run lint",
-    "jest": "cross-env NODE_ENV=test TZ=UTC lumos jest",
-    "jest:coverage": "yarn run jest --coverage",
-    "test": "yarn run jest:coverage",
-    "type": "lumos typescript --noEmit",
-    "prettier": "lumos prettier",
-    "build": "lumos typescript",
-    "pretest": "yarn run type",
-    "release": "semantic-release"
-  },
   "dependencies": {
     "@boost/cli": "^1.2.1",
     "@boost/core": "^1.18.7",
     "chalk": "^4.1.0",
+    "enquirer": "^2.3.6",
+    "fs-extra": "^9.0.1",
     "minimist": "^1.2.5",
     "react": "^16.13.1",
-    "simple-git": "^2.11.0"
+    "simple-git": "^2.11.0",
+    "yaml": "^1.10.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^9.0.1",
+    "@rajzik/az-semantic-release-config": "^1.0.6",
+    "@rajzik/config-babel": "^1.11.23",
+    "@rajzik/config-eslint": "^2.4.59",
+    "@rajzik/config-jest": "^1.10.25",
+    "@rajzik/config-prettier": "^1.6.29",
+    "@rajzik/config-typescript": "^1.7.10",
+    "@rajzik/conventional-changelog-lint-config-beemo": "^1.0.1",
+    "@rajzik/lumos": "^3.0.81",
+    "@types/fs-extra": "^9.0.1",
+    "@types/react": "^16.9.41",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "semantic-release": "^17.1.1"
   }
 }

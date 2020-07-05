@@ -1,5 +1,6 @@
 /* eslint-disable class-methods-use-this */
 import { Arg, Command, Config } from '@boost/cli';
+import { cloneRepoAndGetConfig } from './common';
 
 type CustomParams = [string];
 
@@ -15,7 +16,8 @@ export default class UpdateCommand extends Command {
     type: 'string',
   })
   async run(url: string) {
-    await new Promise(resolve => resolve());
-    console.log(url, 'sup mate');
+    const config = await cloneRepoAndGetConfig(url);
+
+    console.log(config, 'sup mate');
   }
 }
