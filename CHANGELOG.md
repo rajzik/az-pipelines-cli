@@ -1,3 +1,9 @@
+### 1.0.2 - 2020-07-06
+
+#### 🐞 Fixes
+
+- Build. (#3) ([fd4ff68](https://github.com/rajzik/az-pipelines-cli/commit/fd4ff68)), closes [#3](https://github.com/rajzik/az-pipelines-cli/issues/3)
+
 ### 1.0.1 - 2020-07-06
 
 #### 🐞 Fixes
