@@ -1,5 +1,5 @@
 import simpleGit from 'simple-git';
-import { BASE_DIR, REPO_PATH } from './constants';
+import { BASE_DIR, REPO_PATH } from '../constants';
 
 const git = simpleGit({
   baseDir: BASE_DIR,

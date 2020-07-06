@@ -29,16 +29,9 @@ export default class UpdateCommand extends Command {
     const config = await cloneRepoAndGetConfig(url);
     await copyFiles(config);
     const variables = await readVariables(path.join(REPO_PATH, config.rootDir, config.variables));
-    console.log(variables);
-
     const localVariables = await readVariables(path.join(config.rootDir, config.variables));
-    console.log(localVariables);
-
     const mergedVariables = this.mergeVariables(localVariables, variables);
-    console.log(mergedVariables);
-
     const newVariables = this.findNewVariables(localVariables, variables);
-    console.log(newVariables);
     const answers = await promptUser(newVariables);
 
     const yaml = convertVariablesObjectToYaml(answers, mergedVariables);

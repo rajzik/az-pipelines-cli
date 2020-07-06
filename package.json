@@ -2,7 +2,6 @@
   "name": "@rajzik/az-pipelines-cli",
   "version": "0.0.0",
   "description": "Azure pipelines tool",
-  "main": "index.js",
   "types": "lib/index.d.ts",
   "repository": "git@github.com:rajzik/az-pipelines-cli.git",
   "author": "Silhan Jan <jsilhan@oriflame.com>",
@@ -10,9 +9,17 @@
   "publishConfig": {
     "access": "public"
   },
+  "bin": {
+    "az-pipelines-cli": "index.js",
+    "@rajzik/az-pipelines-cli": "index.js"
+  },
   "engines": {
     "node": ">=12"
   },
+  "files": [
+    "lib",
+    "index.js"
+  ],
   "scripts": {
     "prepare": "lumos create-config --silent",
     "lint": "lumos eslint",
