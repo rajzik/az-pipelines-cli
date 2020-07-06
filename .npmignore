@@ -46,3 +46,13 @@ tsconfig.eslint.json
 tsconfig.options.json
 webpack.config.js
 *.tsbuildinfo
+.editorconfig
+.huskyrc
+.lintstagedrc
+.nvmrc
+commitlint.config.js
+configs
+.releaserc
+*.tgz
+TEST-RESULTS.xml
+.travis.yml
