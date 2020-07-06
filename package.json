@@ -26,6 +26,7 @@
     "prettier": "lumos prettier",
     "build": "lumos typescript",
     "pretest": "yarn run type",
+    "prerelease": "yarn run build",
     "release": "semantic-release"
   },
   "lumos": {
