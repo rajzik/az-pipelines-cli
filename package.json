@@ -10,16 +10,11 @@
     "access": "public"
   },
   "bin": {
-    "az-pipelines-cli": "index.js",
-    "@rajzik/az-pipelines-cli": "index.js"
+    "az-pipelines-cli": "index.js"
   },
   "engines": {
     "node": ">=12"
   },
-  "files": [
-    "lib",
-    "index.js"
-  ],
   "scripts": {
     "prepare": "lumos create-config --silent",
     "lint": "lumos eslint",
@@ -49,7 +44,6 @@
   },
   "dependencies": {
     "@boost/cli": "^1.2.1",
-    "@boost/core": "^1.18.7",
     "chalk": "^4.1.0",
     "enquirer": "^2.3.6",
     "fs-extra": "^9.0.1",
