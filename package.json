@@ -1,6 +1,6 @@
 {
   "name": "@rajzik/az-pipelines-cli",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Azure pipelines tool",
   "types": "lib/index.d.ts",
   "repository": "git@github.com:rajzik/az-pipelines-cli.git",
