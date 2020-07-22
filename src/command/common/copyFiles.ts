@@ -16,15 +16,12 @@ function convertToArray<T>(possiblyArray?: T | T[]): T[] {
 }
 
 export async function copyFiles({ rootDir, targetDir, files }: IConfig) {
-  await createDestinationDirectory(targetDir || rootDir);
+  await createDestinationDirectory(targetDir);
 
   const filesToCopy = convertToArray(files);
 
   await asyncForEach(filesToCopy, async current => {
-    await fsExtra.copy(
-      path.join(REPO_PATH, rootDir, current),
-      path.join(targetDir || rootDir, current),
-    );
+    await fsExtra.copy(path.join(REPO_PATH, rootDir, current), path.join(targetDir, current));
   });
 }
 

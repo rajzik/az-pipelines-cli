@@ -4,6 +4,7 @@ import path from 'path';
 import { REPO_PATH } from '../constants';
 import { convertVariablesObjectToYaml } from '../utils';
 import {
+  cleanTempFolder,
   cloneRepoAndGetConfig,
   copyFiles,
   promptUser,
@@ -35,5 +36,6 @@ export default class CreateCommand extends Command {
     const answers = await promptUser(variables);
     const yaml = convertVariablesObjectToYaml(answers);
     await writeVariables(config, yaml);
+    await cleanTempFolder();
   }
 }

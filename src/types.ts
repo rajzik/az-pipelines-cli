@@ -2,7 +2,7 @@ import { prompt } from 'enquirer';
 
 export interface IConfig {
   rootDir: string;
-  targetDir?: string;
+  targetDir: string;
   variables: string;
   files: string | string[];
 }

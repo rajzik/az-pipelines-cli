@@ -5,6 +5,7 @@ import { REPO_PATH } from '../constants';
 import { IVariable, IVariables } from '../types';
 import { convertVariablesObjectToYaml } from '../utils';
 import {
+  cleanTempFolder,
   cloneRepoAndGetConfig,
   copyFiles,
   promptUser,
@@ -30,13 +31,14 @@ export default class UpdateCommand extends Command {
 
     await copyFiles(config);
     const variables = await readVariables(path.join(REPO_PATH, config.rootDir, config.variables));
-    const localVariables = await readVariables(path.join(config.rootDir, config.variables));
+    const localVariables = await readVariables(path.join(config.targetDir, config.variables));
     const mergedVariables = this.mergeVariables(localVariables, variables);
     const newVariables = this.findNewVariables(localVariables, variables);
     const answers = await promptUser(newVariables);
 
     const yaml = convertVariablesObjectToYaml(answers, mergedVariables);
     await writeVariables(config, yaml);
+    await cleanTempFolder();
   }
 
   private mergeVariables(
