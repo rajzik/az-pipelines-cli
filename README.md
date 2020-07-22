@@ -39,10 +39,10 @@ module.exports = {
 
 ```ts
 export interface IConfig {
-  rootDir: string;
-  targetDir?: string;
-  variables: string;
-  files: string | string[];
+  rootDir: string; // Root directory of template repository
+  targetDir?: string; // Destination directory of target project
+  variables: string; // Variable path
+  files: string | string[]; // File/files which you want to copy to the target project
 }
 ```
 
