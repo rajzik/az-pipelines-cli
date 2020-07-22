@@ -7,3 +7,5 @@ export async function cloneRepoAndGetConfig(url: string) {
   await cloneRepo(url);
   return getConfig();
 }
+
+export default cloneRepoAndGetConfig;

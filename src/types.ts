@@ -2,9 +2,9 @@ import { prompt } from 'enquirer';
 
 export interface IConfig {
   rootDir: string;
+  targetDir: string;
   variables: string;
-  main: string;
-  monorepo?: string | boolean;
+  files: string | string[];
 }
 
 export interface IVariable {

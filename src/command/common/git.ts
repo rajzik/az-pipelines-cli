@@ -1,5 +1,5 @@
 import simpleGit from 'simple-git';
-import { BASE_DIR, REPO_PATH } from '../constants';
+import { BASE_DIR, REPO_PATH } from '../../constants';
 
 const git = simpleGit({
   baseDir: BASE_DIR,
@@ -9,7 +9,6 @@ const git = simpleGit({
 
 export async function cloneRepo(url: string) {
   await git.clone(url, REPO_PATH);
-  console.log(REPO_PATH);
 }
 
 export default git;
