@@ -1,18 +1,31 @@
 import fsExtra from 'fs-extra';
 import path from 'path';
+import { REPO_PATH } from '../../constants';
 import { IConfig } from '../../types';
 import { asyncForEach } from '../../utils';
-import { REPO_PATH } from '../constants';
-import { createRootDir } from './createRootDir';
+import { createDestinationDirectory } from './createDestinationDirectory';
 
-export async function copyFiles(config: IConfig) {
-  await createRootDir(config.rootDir);
-  const dir = await fsExtra.readdir(path.join(REPO_PATH, config.rootDir));
-  const filteredFiles = dir.filter(current => current !== config.variables);
-  await asyncForEach(filteredFiles, async current => {
+function convertToArray<T>(possiblyArray?: T | T[]): T[] {
+  if (!possiblyArray) {
+    return [];
+  }
+
+  if (Array.isArray(possiblyArray)) return possiblyArray;
+
+  return [possiblyArray];
+}
+
+export async function copyFiles({ rootDir, targetDir, files }: IConfig) {
+  await createDestinationDirectory(targetDir || rootDir);
+
+  const filesToCopy = convertToArray(files);
+
+  await asyncForEach(filesToCopy, async current => {
     await fsExtra.copy(
-      path.join(REPO_PATH, config.rootDir, current),
-      path.join(config.rootDir, current),
+      path.join(REPO_PATH, rootDir, current),
+      path.join(targetDir || rootDir, current),
     );
   });
 }
+
+export default copyFiles;

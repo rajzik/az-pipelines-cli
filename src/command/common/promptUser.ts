@@ -6,3 +6,5 @@ export async function promptUser(variables: IVariable[]) {
   const options = variables.map(mapTypeToEnquirer) as EnquirerPrompt;
   return prompt<{ [key: string]: unknown }>(options);
 }
+
+export default promptUser;

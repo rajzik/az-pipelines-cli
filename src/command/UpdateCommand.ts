@@ -1,6 +1,7 @@
 /* eslint-disable class-methods-use-this */
 import { Arg, Command, Config } from '@boost/cli';
 import path from 'path';
+import { REPO_PATH } from '../constants';
 import { IVariable, IVariables } from '../types';
 import { convertVariablesObjectToYaml } from '../utils';
 import {
@@ -10,7 +11,6 @@ import {
   readVariables,
   writeVariables,
 } from './common';
-import { REPO_PATH } from './constants';
 
 type CustomParams = [string];
 
@@ -27,6 +27,7 @@ export default class UpdateCommand extends Command {
   })
   async run(url: string) {
     const config = await cloneRepoAndGetConfig(url);
+
     await copyFiles(config);
     const variables = await readVariables(path.join(REPO_PATH, config.rootDir, config.variables));
     const localVariables = await readVariables(path.join(config.rootDir, config.variables));

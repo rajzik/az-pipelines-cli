@@ -1,16 +1,18 @@
 import path from 'path';
+import { REPO_PATH } from '../../constants';
 import { IConfig } from '../../types';
-import { REPO_PATH } from '../constants';
 
 export async function getConfig(): Promise<IConfig> {
-  const { main, rootDir = '.', variables, monorepo } = (
+  const { files, rootDir = '.', targetDir, variables } = (
     await import(path.join(REPO_PATH, '.azpipelinesrc.js'))
   ).default;
 
   return {
-    main,
+    files,
     rootDir,
+    targetDir: targetDir || rootDir,
     variables,
-    monorepo,
   };
 }
+
+export default getConfig;
