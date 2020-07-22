@@ -1,3 +1,9 @@
+# 2.0.0 - 2020-07-22
+
+#### 💥 Breaking
+
+- Change config. (#4) ([af95ba6](https://github.com/rajzik/az-pipelines-cli/commit/af95ba6)), closes [#4](https://github.com/rajzik/az-pipelines-cli/issues/4)
+
 ### 1.0.2 - 2020-07-06
 
 #### 🐞 Fixes
