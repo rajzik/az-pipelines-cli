@@ -1,3 +1,9 @@
+## 2.1.0 - 2020-07-26
+
+#### 🚀 Updates
+
+- Config multiple format support. (#5) ([c5ddbd4](https://github.com/rajzik/az-pipelines-cli/commit/c5ddbd4)), closes [#5](https://github.com/rajzik/az-pipelines-cli/issues/5)
+
 # 2.0.0 - 2020-07-22
 
 #### 💥 Breaking
