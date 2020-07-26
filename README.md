@@ -24,7 +24,7 @@ npx @rajzik/az-pipelines-cli update git@github.com:rajzik/pipelines.git
 
 Add config to your repository
 
-### .azpipelinesrc.js
+### Config
 
 ```js
 module.exports = {
@@ -34,6 +34,14 @@ module.exports = {
   files: 'azure-pipelines.yml',
 };
 ```
+
+**Config file names:**
+
+- .azpipelinesrc
+- .azpipelinesrc.json
+- .azpipelinesrc.yaml
+- .azpipelinesrc.yml
+- .azpipelinesrc.js
 
 **Config interface:**
 

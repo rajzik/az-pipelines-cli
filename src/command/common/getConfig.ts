@@ -1,11 +1,10 @@
-import path from 'path';
-import { REPO_PATH } from '../../constants';
+import { cosmiconfig } from 'cosmiconfig';
+import { moduleName, REPO_PATH, searchPlaces } from '../../constants';
 import { IConfig } from '../../types';
 
 export async function getConfig(): Promise<IConfig> {
-  const { files, rootDir = '.', targetDir, variables } = (
-    await import(path.join(REPO_PATH, '.azpipelinesrc.js'))
-  ).default;
+  const { config } = (await cosmiconfig(moduleName, { searchPlaces }).search(REPO_PATH)) ?? {};
+  const { files, rootDir = '.', targetDir, variables } = config;
 
   return {
     files,
