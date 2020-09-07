@@ -11,13 +11,22 @@ All commands needs url to the template pipelines.
 **Create command:**
 
 ```bash
-npx @rajzik/az-pipelines-cli create git@github.com:rajzik/pipelines.git
+npx @rajzik/az-pipelines-cli create git@github.com:rajzik/pipelines.git [branch-to-checkout]
 ```
 
 **Update command:**
 
 ```bash
+npx @rajzik/az-pipelines-cli update git@github.com:rajzik/pipelines.git [branch-to-checkout]
+```
+
+### Examples
+
+```bash
+npx @rajzik/az-pipelines-cli update git@github.com:rajzik/pipelines.git develop
 npx @rajzik/az-pipelines-cli update git@github.com:rajzik/pipelines.git
+npx @rajzik/az-pipelines-cli create git@github.com:rajzik/pipelines.git develop
+npx @rajzik/az-pipelines-cli create git@github.com:rajzik/pipelines.git
 ```
 
 ## Setting up template pipelines repository

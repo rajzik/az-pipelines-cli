@@ -10,7 +10,7 @@ export function getVersion() {
 
 export async function asyncForEach<T extends unknown>(
   array: T[],
-  callback: (current: T, index: number, array: T[]) => Promise<unknown>,
+  callback: (current: T, index: number, arr: T[]) => Promise<unknown>,
 ) {
   for (let index = 0; index < array.length; index += 1) {
     // eslint-disable-next-line no-await-in-loop
