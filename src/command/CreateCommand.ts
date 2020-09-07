@@ -12,21 +12,31 @@ import {
   writeVariables,
 } from './common';
 
-type CustomParams = [string];
+type CustomParams = [string, string];
 
 @Config('create', 'Create project pipelines', {
   aliases: [],
   deprecated: false,
 })
 export default class CreateCommand extends Command {
-  @Arg.Params<CustomParams>({
-    description: 'String',
-    label: 'url',
-    required: true,
-    type: 'string',
-  })
-  async run(url: string) {
-    const config = await cloneRepoAndGetConfig(url);
+  @Arg.Params<CustomParams>(
+    {
+      description: 'String',
+      label: 'url',
+      required: true,
+      type: 'string',
+    },
+
+    {
+      description: 'branch to checkout',
+      label: 'branch',
+      required: false,
+      type: 'string',
+      default: '',
+    },
+  )
+  async run(url: string, branch: string) {
+    const config = await cloneRepoAndGetConfig(url, branch);
 
     await copyFiles(config);
 

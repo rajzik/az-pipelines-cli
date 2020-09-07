@@ -13,21 +13,30 @@ import {
   writeVariables,
 } from './common';
 
-type CustomParams = [string];
+type CustomParams = [string, string];
 
 @Config('update', 'Update project pipelines', {
   aliases: [],
   deprecated: false,
 })
 export default class UpdateCommand extends Command {
-  @Arg.Params<CustomParams>({
-    description: 'String',
-    label: 'url',
-    required: true,
-    type: 'string',
-  })
-  async run(url: string) {
-    const config = await cloneRepoAndGetConfig(url);
+  @Arg.Params<CustomParams>(
+    {
+      description: 'Repository url',
+      label: 'url',
+      required: true,
+      type: 'string',
+    },
+    {
+      description: 'branch to checkout',
+      label: 'branch',
+      required: false,
+      type: 'string',
+      default: '',
+    },
+  )
+  async run(url: string, branch: string) {
+    const config = await cloneRepoAndGetConfig(url, branch);
 
     await copyFiles(config);
     const variables = await readVariables(path.join(REPO_PATH, config.rootDir, config.variables));

@@ -7,8 +7,17 @@ const git = simpleGit({
   maxConcurrentProcesses: 6,
 });
 
-export async function cloneRepo(url: string) {
+export async function cloneRepo(url: string, branch = '') {
   await git.clone(url, REPO_PATH);
+
+  if (branch) {
+    const internalGitProcess = simpleGit({
+      baseDir: REPO_PATH,
+      binary: 'git',
+      maxConcurrentProcesses: 6,
+    });
+    await internalGitProcess.checkout(branch);
+  }
 }
 
 export default git;
