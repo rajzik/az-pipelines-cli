@@ -1,3 +1,9 @@
+## 2.2.0 - 2020-09-07
+
+#### 🚀 Updates
+
+- Add branch to commands. (#6) ([7a846e3](https://github.com/rajzik/az-pipelines-cli/commit/7a846e3)), closes [#6](https://github.com/rajzik/az-pipelines-cli/issues/6)
+
 ## 2.1.0 - 2020-07-26
 
 #### 🚀 Updates
